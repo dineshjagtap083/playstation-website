@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlayStation Gaming</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* NAVBAR */
+    nav{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+    }
+
+    nav h1{
+      font-size:32px;
+      color:#0070ff;
+      font-weight:700;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#0070ff;
+    }
+
+    .menu-btn{
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    /* HERO SECTION */
+    .hero{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:120px 8%;
+      gap:50px;
+      flex-wrap:wrap;
+      background:linear-gradient(to right,#050816,#0b1b45);
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:300px;
+    }
+
+    .hero-text h2{
+      font-size:60px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero-text h2 span{
+      color:#0070ff;
+    }
+
+    .hero-text p{
+      color:#d1d1d1;
+      line-height:1.8;
+      margin-bottom:30px;
+      max-width:550px;
+    }
+
+    .btn{
+      padding:14px 32px;
+      border:none;
+      background:#0070ff;
+      color:white;
+      font-size:17px;
+      border-radius:50px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:#0055cc;
+    }
+
+    .hero-image{
+      flex:1;
+      min-width:300px;
+      text-align:center;
+    }
+
+    .hero-image img{
+      width:100%;
+      max-width:550px;
+      animation:float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-15px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* FEATURES */
+    .features{
+      padding:100px 8%;
+      background:#091127;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:60px;
+    }
+
+    .feature-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .feature-box{
+      background:#111b36;
+      padding:35px;
+      border-radius:20px;
+      transition:0.4s;
+      text-align:center;
+    }
+
+    .feature-box:hover{
+      transform:translateY(-10px);
+      background:#16264d;
+    }
+
+    .feature-box h3{
+      margin:20px 0;
+      color:#0070ff;
+    }
+
+    .feature-box p{
+      color:#cfcfcf;
+      line-height:1.7;
+    }
+
+    /* GAMES */
+    .games{
+      padding:100px 8%;
+      background:#050816;
+    }
+
+    .game-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .game-card{
+      background:#111b36;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+    }
+
+    .game-card:hover{
+      transform:scale(1.03);
+    }
+
+    .game-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .game-info{
+      padding:25px;
+    }
+
+    .game-info h3{
+      margin-bottom:15px;
+    }
+
+    .game-info p{
+      color:#d0d0d0;
+      margin-bottom:20px;
+      line-height:1.7;
+    }
+
+    /* CTA */
+    .cta{
+      padding:100px 8%;
+      text-align:center;
+      background:linear-gradient(to right,#0070ff,#002f6c);
+    }
+
+    .cta h2{
+      font-size:45px;
+      margin-bottom:20px;
+    }
+
+    .cta p{
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#02040d;
+      padding:30px;
+      text-align:center;
+      color:#bdbdbd;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      .hero-text h2{
+        font-size:42px;
+      }
+
+      nav ul{
+        position:absolute;
+        top:80px;
+        right:-100%;
+        background:#111b36;
+        width:220px;
+        flex-direction:column;
+        padding:30px;
+        transition:0.4s;
+      }
+
+      nav ul.active{
+        right:20px;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .hero{
+        text-align:center;
+      }
+
+      .hero-text h2{
+        font-size:34px;
+      }
+
+      .section-title{
+        font-size:32px;
+      }
+
+      .cta h2{
+        font-size:32px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h1>PS5</h1>
+
+    <ul id="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-text">
+      <h2>Experience The Future Of <span>Gaming</span></h2>
+
+      <p>
+        Discover the next generation PlayStation console with ultra-fast SSD,
+        ray tracing, breathtaking graphics and immersive gameplay.
+      </p>
+
+      <button class="btn">Buy Now</button>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=1200&auto=format&fit=crop" alt="PlayStation">
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+
+    <h2 class="section-title">Why Choose PlayStation</h2>
+
+    <div class="feature-container">
+
+      <div class="feature-box">
+        <h3>Ultra HD Graphics</h3>
+        <p>
+          Enjoy realistic visuals with advanced GPU performance and ray tracing technology.
+        </p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Lightning Fast SSD</h3>
+        <p>
+          Experience near instant loading times and seamless gameplay performance.
+        </p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Immersive Audio</h3>
+        <p>
+          Feel every sound around you with advanced 3D audio technology.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GAMES -->
+  <section class="games" id="games">
+
+    <h2 class="section-title">Popular Games</h2>
+
+    <div class="game-container">
+
+      <div class="game-card">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="game-info">
+          <h3>Spider-Man</h3>
+          <p>
+            Swing through New York City with amazing graphics and smooth gameplay.
+          </p>
+
+          <button class="btn">Explore</button>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="game-info">
+          <h3>God Of War</h3>
+          <p>
+            Join Kratos on an epic adventure packed with action and mythology.
+          </p>
+
+          <button class="btn">Explore</button>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <div class="game-info">
+          <h3>Racing Legends</h3>
+          <p>
+            Feel the speed with realistic racing environments and dynamic weather.
+          </p>
+
+          <button class="btn">Explore</button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+
+    <h2>Ready To Play?</h2>
+
+    <p>
+      Upgrade your gaming experience with the powerful PlayStation console and explore unlimited entertainment.
+    </p>
+
+    <button class="btn">Get Started</button>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 PlayStation Gaming Website | Designed in One File</p>
+  </footer>
+
+  <script>
+
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+  </script>
+
+</body>
+</html>
